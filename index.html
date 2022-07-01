@@ -22,7 +22,7 @@
 	  <form class="form-inline order-lg-last order-0 col-auto">
       	<button class="btn btn-outline-secondary mr-3" type="button" data-toggle="modal" data-target="#loginModal">Log in</button>
       	<button class="btn btn-outline-secondary " type="button">Sign up</button>
-  	  </form>
+  	</form>
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav pl-5">
 		<li class="nav-item active">
@@ -60,7 +60,7 @@
       </div>
   <!-- Modal Content -->
   		<div class="modal-body" >
-  			<form onsubmit='return validate()'>
+  			<form onsubmit='return validate()' method="post">
   			<div class="md-form mt-2 mb-3">
   				<label for="uname"><b>Username</b></label>
 			      <input type="text" placeholder="Enter Username" name="uname" class="form-control validate" id="checkuname" required>

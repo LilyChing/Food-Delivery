@@ -6,7 +6,7 @@ function validate() {
     if (checkUName == "lily" && checkPW == "lily") {
         alert("Login successfully");
         return true;
-        window.location = "index.html"; // Redirecting to other page.
+        window.location = "#"; // Redirecting to other page.
     } else {
         attempt--; // Decrementing by one.
         document.getElementById("warning").innerHTML = "Wrong Username or Password. You have left "+ attempt + " attempt.";
