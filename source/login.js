@@ -1,12 +1,27 @@
-var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
-function validate() {
-    var checkUName = document.getElementById('checkuname').value;
-    var checkPW = document.getElementById('checkpw').value;
-    if (checkUName == "lily" && checkPW == "lily") {
+// Variable to count number of attempts.
+var attempt = 3; 
+var checkUName = "";
+var checkPW = "";
+const loginform = document.querySelector(".login");
+const loginPlace = document.querySelector(".loginplace");
+const namePlace = document.querySelector(".nameplace");
+if (!sessionStorage.getItem("username")){
+// Below function Executes on submit of login form.
+loginform.addEventListener("submit", (event) => {
+    event.preventDefault(); // //stop form from submitting
+    checkUName = document.getElementById("checkuname").value;
+    checkPW = document.getElementById("checkpw").value;
+    if (checkPW == "lily") {
+        // If user type in their name, use sessionStorage to store username, otherwise, store "Guest"
+        if (!checkUName){
+            sessionStorage.setItem("username", 'Guest');
+        }else{
+            sessionStorage.setItem("username", checkUName);
+        }
+        console.log(sessionStorage.getItem("username"));
         alert("Login successfully");
-        window.location ='#'; // Redirecting to other page.
-        return false;
+        logined();
+        // location.reload();
     } else {
         attempt--; // Decrementing by one.
         document.getElementById("warning").innerHTML = "Wrong Username or Password. You have left "+ attempt + " attempt.";
@@ -16,8 +31,26 @@ function validate() {
             document.getElementById("checkpw").disabled = true;
             document.getElementById("loginbutton").disabled = true;
             document.getElementById("warning").innerHTML = "Your account is blocked now. Please refresh the website."
-            return false;
         }
-        return false;
     }
+});
+}else{
+    logined();
+}
+
+function logined(){
+loginPlace.style.display = "none";
+    $('#loginModal').modal('hide');
+    genElement(`Hello, ${sessionStorage.getItem("username")}!`,"mr-3","div",namePlace);
+    genElement("logout","btn btn-outline-secondary logout","button",namePlace);
+    const logoutbtn = document.querySelector(".logout");
+    logoutbtn.setAttribute("type","button");
+}
+
+function genElement(text, messageType, tag="div", location) {
+	// generates HTML elements which displays text
+	let newElement = document.createElement(tag);
+	newElement.innerHTML = text;
+	newElement.setAttribute("class",messageType); // add class for styling
+	location.appendChild(newElement);
 }
