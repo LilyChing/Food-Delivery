@@ -45,4 +45,7 @@
 	.big_size .card-img{
 		height: 185px;
 	}
+    .navbar-brand{
+        display: none;
+    }
 }

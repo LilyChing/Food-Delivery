@@ -21,7 +21,6 @@ loginform.addEventListener("submit", (event) => {
         console.log(sessionStorage.getItem("username"));
         alert("Login successfully");
         logined();
-        // location.reload();
     } else {
         attempt--; // Decrementing by one.
         document.getElementById("warning").innerHTML = "Wrong Username or Password. You have left "+ attempt + " attempt.";
@@ -45,6 +44,11 @@ loginPlace.style.display = "none";
     genElement("logout","btn btn-outline-secondary logout","button",namePlace);
     const logoutbtn = document.querySelector(".logout");
     logoutbtn.setAttribute("type","button");
+    logoutbtn.onclick = function() {
+        alert("Logout successfully");
+        sessionStorage.clear();
+        location.reload();
+    };
 }
 
 function genElement(text, messageType, tag="div", location) {
